@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>FABLE® — Digital Experience Agency</title>
+    <meta name="description" content="FABLE is a digital experience agency crafting websites, brands and interactive WebGL experiences that people remember." />
+    <meta name="theme-color" content="#07070c" />
+    <meta property="og:title" content="FABLE® — Digital Experience Agency" />
+    <meta property="og:description" content="We craft digital fables. Websites, brands & interactive experiences that people remember." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <!-- ===== Preloader ===== -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <div class="preloader__logo">FABLE<sup>®</sup></div>
+        <div class="preloader__count" id="preloaderCount">0</div>
+        <div class="preloader__bar"><span id="preloaderBar"></span></div>
+      </div>
+    </div>
+
+    <!-- ===== WebGL canvas (fixed behind everything) ===== -->
+    <canvas class="webgl" id="webgl" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ===== Custom cursor (desktop only) ===== -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <span class="cursor__dot"></span>
+      <span class="cursor__label" id="cursorLabel"></span>
+    </div>
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+      <a class="header__logo" href="#top" data-magnetic aria-label="FABLE — back to top">
+        FABLE<sup>®</sup>
+      </a>
+      <div class="header__meta">
+        <span class="header__status"><i class="pulse-dot"></i> Open for projects</span>
+        <span class="header__clock" id="clock">00:00</span>
+      </div>
+      <button class="header__menu" id="menuToggle" data-magnetic aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay">
+        <span class="header__menu-word" data-open="Close" data-closed="Menu">Menu</span>
+        <span class="header__menu-lines"><i></i><i></i></span>
+      </button>
+    </header>
+
+    <!-- ===== Fullscreen menu ===== -->
+    <nav class="menu" id="menuOverlay" aria-hidden="true">
+      <div class="menu__bg"></div>
+      <ol class="menu__list">
+        <li style="--i: 0"><a href="#top" class="menu__link" data-menu-link><span class="menu__num">01</span><span class="menu__word">Home</span></a></li>
+        <li style="--i: 1"><a href="#work" class="menu__link" data-menu-link><span class="menu__num">02</span><span class="menu__word">Work</span></a></li>
+        <li style="--i: 2"><a href="#services" class="menu__link" data-menu-link><span class="menu__num">03</span><span class="menu__word">Services</span></a></li>
+        <li style="--i: 3"><a href="#studio" class="menu__link" data-menu-link><span class="menu__num">04</span><span class="menu__word">Studio</span></a></li>
+        <li style="--i: 4"><a href="#contact" class="menu__link" data-menu-link><span class="menu__num">05</span><span class="menu__word">Contact</span></a></li>
+      </ol>
+      <div class="menu__footer">
+        <a href="mailto:hello@fable.studio" class="menu__mail">hello@fable.studio</a>
+        <div class="menu__socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+          <a href="#" aria-label="LinkedIn">LI</a>
+          <a href="#" aria-label="Awwwards">AW</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <!-- ===== Hero ===== -->
+      <section class="hero" data-section="hero">
+        <p class="hero__eyebrow reveal">
+          <span class="line">Digital experience agency — est. 2019</span>
+        </p>
+        <h1 class="hero__title" aria-label="We craft digital fables">
+          <span class="hero__line"><span class="hero__word" style="--d: 0">WE</span> <span class="hero__word" style="--d: 1">CRAFT</span></span>
+          <span class="hero__line hero__line--accent"><span class="hero__word" style="--d: 2">DIGITAL</span></span>
+          <span class="hero__line"><span class="hero__word" style="--d: 3">FABLES<sup>®</sup></span></span>
+        </h1>
+        <div class="hero__bottom">
+          <p class="hero__sub reveal">
+            An award-chasing studio building websites, brands &amp; interactive
+            experiences people actually remember.
+          </p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--fill" href="#contact" data-magnetic data-cursor="Let's go">Start a project</a>
+            <a class="btn btn--ghost" href="#work" data-magnetic data-cursor="Peek">See the work</a>
+          </div>
+        </div>
+        <div class="hero__scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <i class="hero__scroll-line"></i>
+        </div>
+      </section>
+
+      <!-- ===== Marquee ===== -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Websites ✺ Branding ✺ WebGL ✺ E-commerce ✺ Motion ✺ Strategy ✺&nbsp;</span>
+          <span>Websites ✺ Branding ✺ WebGL ✺ E-commerce ✺ Motion ✺ Strategy ✺&nbsp;</span>
+        </div>
+      </div>
+
+      <!-- ===== Work ===== -->
+      <section class="work" id="work" data-section="work">
+        <header class="section-head reveal">
+          <h2 class="section-head__title">Selected<br /><em>Work</em></h2>
+          <span class="section-head__count">(04)</span>
+        </header>
+
+        <div class="work__grid">
+          <a href="#contact" class="project reveal" style="--i: 0" data-cursor="View case">
+            <figure class="project__media project__media--1">
+              <span class="project__orb"></span>
+              <span class="project__year">2025</span>
+            </figure>
+            <div class="project__info">
+              <h3 class="project__title">Lumina Skincare</h3>
+              <p class="project__tags">E-commerce · 3D Product · Art Direction</p>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="#contact" class="project reveal" style="--i: 1" data-cursor="View case">
+            <figure class="project__media project__media--2">
+              <span class="project__orb"></span>
+              <span class="project__year">2025</span>
+            </figure>
+            <div class="project__info">
+              <h3 class="project__title">Orbital Records</h3>
+              <p class="project__tags">Web Experience · WebGL · Audio-reactive</p>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="#contact" class="project reveal" style="--i: 2" data-cursor="View case">
+            <figure class="project__media project__media--3">
+              <span class="project__orb"></span>
+              <span class="project__year">2024</span>
+            </figure>
+            <div class="project__info">
+              <h3 class="project__title">Atlas Travel Co.</h3>
+              <p class="project__tags">Brand Identity · Website · CMS</p>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="#contact" class="project reveal" style="--i: 3" data-cursor="View case">
+            <figure class="project__media project__media--4">
+              <span class="project__orb"></span>
+              <span class="project__year">2024</span>
+            </figure>
+            <div class="project__info">
+              <h3 class="project__title">Pulse Festival</h3>
+              <p class="project__tags">Interactive · Ticketing · Motion</p>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+        </div>
+        <p class="work__hint" aria-hidden="true">( drag / swipe )</p>
+      </section>
+
+      <!-- ===== Services ===== -->
+      <section class="services" id="services" data-section="services">
+        <header class="section-head reveal">
+          <h2 class="section-head__title">What we<br /><em>do best</em></h2>
+          <span class="section-head__count">(04)</span>
+        </header>
+
+        <div class="services__list">
+          <details class="service reveal" style="--i: 0">
+            <summary class="service__row" data-cursor="Open">
+              <span class="service__num">01</span>
+              <span class="service__name">Strategy</span>
+              <span class="service__plus" aria-hidden="true"></span>
+            </summary>
+            <div class="service__body">
+              <p>Positioning, naming, content architecture and conversion design. We find the story before we tell it.</p>
+              <ul><li>Brand strategy</li><li>UX research</li><li>Content design</li><li>Analytics</li></ul>
+            </div>
+          </details>
+
+          <details class="service reveal" style="--i: 1">
+            <summary class="service__row" data-cursor="Open">
+              <span class="service__num">02</span>
+              <span class="service__name">Design</span>
+              <span class="service__plus" aria-hidden="true"></span>
+            </summary>
+            <div class="service__body">
+              <p>Interfaces with a point of view. Typography-led, motion-first design systems that scale from phone to cinema screen.</p>
+              <ul><li>Art direction</li><li>UI / UX design</li><li>Design systems</li><li>Prototyping</li></ul>
+            </div>
+          </details>
+
+          <details class="service reveal" style="--i: 2">
+            <summary class="service__row" data-cursor="Open">
+              <span class="service__num">03</span>
+              <span class="service__name">Development</span>
+              <span class="service__plus" aria-hidden="true"></span>
+            </summary>
+            <div class="service__body">
+              <p>Hand-tuned front-ends that hit 60fps on a mid-range phone. Performance budgets are a creative constraint, not an afterthought.</p>
+              <ul><li>Creative front-end</li><li>Headless e-commerce</li><li>CMS builds</li><li>Accessibility</li></ul>
+            </div>
+          </details>
+
+          <details class="service reveal" style="--i: 3">
+            <summary class="service__row" data-cursor="Open">
+              <span class="service__num">04</span>
+              <span class="service__name">Motion &amp; 3D</span>
+              <span class="service__plus" aria-hidden="true"></span>
+            </summary>
+            <div class="service__body">
+              <p>WebGL worlds, shader craft and choreography that makes interfaces feel alive — like the orb following you around this page.</p>
+              <ul><li>WebGL / Three.js</li><li>Custom shaders</li><li>3D art</li><li>Interaction design</li></ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stats reveal">
+          <div class="stats__item"><strong data-count="87">0</strong><span>Projects shipped</span></div>
+          <div class="stats__item"><strong data-count="23">0</strong><span>Industry awards</span></div>
+          <div class="stats__item"><strong data-count="12">0</strong><span>Countries served</span></div>
+          <div class="stats__item"><strong data-count="60">0</strong><span>FPS, always</span></div>
+        </div>
+      </section>
+
+      <!-- ===== Manifesto ===== -->
+      <section class="manifesto" id="studio" data-section="manifesto">
+        <p class="manifesto__text" id="manifesto">
+          We believe the web should feel like magic — every pixel earning its
+          place, every interaction telling a story. We are designers, engineers
+          and storytellers who think “good enough” is a bug, not a feature.
+        </p>
+        <p class="manifesto__sign reveal">— The FABLE studio, somewhere between design &amp; engineering</p>
+      </section>
+
+      <!-- ===== Contact ===== -->
+      <section class="contact" id="contact" data-section="contact">
+        <p class="contact__eyebrow reveal">Have a story to tell?</p>
+        <a href="mailto:hello@fable.studio" class="contact__link" data-cursor="Say hi">
+          <span class="contact__word">LET'S</span>
+          <span class="contact__word contact__word--accent">TALK</span>
+          <span class="contact__arrow" aria-hidden="true">↗</span>
+        </a>
+        <p class="contact__note reveal">Usually replies within one coffee. ☕</p>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <span class="footer__brand">FABLE<sup>®</sup> © 2026</span>
+      <nav class="footer__socials" aria-label="Social links">
+        <a href="#">Instagram</a>
+        <a href="#">X</a>
+        <a href="#">LinkedIn</a>
+      </nav>
+      <a href="#top" class="footer__top" data-cursor="Up!">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
